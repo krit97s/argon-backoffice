@@ -1,6 +1,6 @@
 <template>
   <div class="main-content bg-default">
-    <base-nav
+    <!-- <base-nav
       v-model="showMenu"
       :transparent="true"
       menu-classes="justify-content-end"
@@ -48,7 +48,7 @@
            </b-nav-item>
        </b-navbar-nav>
      </template>
-    </base-nav>
+    </base-nav> -->
 
     <div class="main-content">
       <zoom-center-transition
@@ -59,7 +59,7 @@
       </zoom-center-transition>
     </div>
 
-    <footer class="py-5" id="footer-main">
+    <!-- <footer class="py-5" id="footer-main">
       <b-container >
         <b-row align-v="center" class="justify-content-xl-between">
           <b-col xl="6">
@@ -85,7 +85,7 @@
           </b-col>
         </b-row>
       </b-container>
-    </footer>
+    </footer> -->
   </div>
 </template>
 <script>

@@ -82,16 +82,16 @@
                 <!--Divider-->
                 <hr class="my-3">
                 <!--Heading-->
-                <h6 class="navbar-heading text-muted">Documentation</h6>
+                <!-- <h6 class="navbar-heading text-muted">Documentation</h6> -->
                 <!--Navigation-->
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
                         <a class="nav-link"
                            href="https://www.creative-tim.com/learning-lab/bootstrap-vue/alerts/argon-dashboard">
-                            <i class="ni ni-spaceship"></i> Getting started
+                            <i class="ni ni-button-power"></i> ออกจากระบบ
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link"
                            href="https://www.creative-tim.com/learning-lab/bootstrap-vue/colors/argon-dashboard">
                             <i class="ni ni-palette"></i> Foundation
@@ -102,7 +102,7 @@
                            href="https://www.creative-tim.com/learning-lab/bootstrap-vue/alerts/argon-dashboard">
                             <i class="ni ni-ui-04"></i> Components
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             </div>

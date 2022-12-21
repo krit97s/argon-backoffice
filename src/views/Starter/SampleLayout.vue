@@ -15,7 +15,6 @@
     </side-bar>
     <div class="main-content">
       <dashboard-navbar></dashboard-navbar>
-
       <div @click="$sidebar.displaySidebar(false)">
         <fade-transition :duration="200" origin="center top" mode="out-in">
           <!-- your content here -->

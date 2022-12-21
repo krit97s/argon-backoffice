@@ -5,7 +5,7 @@
       <template slot="links">
         <sidebar-item
           :link="{
-            name: 'Dashboard',
+            name: 'ภาพรวมระบบ',
             path: '/dashboard',
             icon: 'ni ni-tv-2 text-primary',
           }"
@@ -14,7 +14,7 @@
 
         <sidebar-item
             :link="{
-              name: 'Icons',
+              name: 'ออเดอร์',
               path: '/icons',
               icon: 'ni ni-planet text-blue'
               }"
