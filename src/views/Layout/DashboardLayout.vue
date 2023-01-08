@@ -9,7 +9,12 @@
           icon: 'ni ni-tv-2 text-primary',
         }">
         </sidebar-item>
-
+        <sidebar-item :link="{
+          name: 'เติมเงิน',
+          path: '/payment',
+          icon: 'ni ni-cart text-primary',
+        }">
+        </sidebar-item>
         <sidebar-item :link="{
           name: 'จัดการสินค้า',
           path: '/product',
@@ -44,18 +49,16 @@
         }">
         </sidebar-item>
 
-
         <sidebar-item :link="{
           name: 'จัดการรายการฝาก',
           path: '/deposit',
           icon: 'fa fa-university text-red'
         }">
         </sidebar-item>
-
         <sidebar-item :link="{
-          name: 'Register',
-          path: '/register',
-          icon: 'ni ni-circle-08 text-pink'
+          name: 'รายงานสถานะออเดอร์',
+          path: '/report',
+          icon: 'ni ni-cart text-pink'
         }">
         </sidebar-item>
       </template>

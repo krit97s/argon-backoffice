@@ -4,9 +4,9 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col class="d-flex align-items-center">
-          <h3 class="mb-0">จัดการหมวดหมู่</h3>
-          <base-button size="sm" class="ml-auto" type="primary"
-            @click="$router.push(`/addcategory`)">เพิ่มหมวดหมู่</base-button>
+          <h3 class="mb-0">รายงานสถานะออเดอร์</h3>
+          <!-- <base-button size="sm" class="ml-auto" type="primary"
+            @click="$router.push(`/addcategory`)">เพิ่มหมวดหมู่</base-button> -->
         </b-col>
       </b-row>
     </template>
@@ -17,12 +17,24 @@
           <div class="font-weight-600 text-primary text-nowrap">{{ tableData.indexOf(row) + 1 }}</div>
         </template>
       </el-table-column>
-      <el-table-column label="name" prop="type" min-width="150px">
+      <el-table-column label="หมายเลขออเดอร์" prop="order_id" min-width="100px">
         <template v-slot="{ row }">
-          <b-badge pill variant='primary'> {{ row.name }}</b-badge>
+          <span class="text-primary"> {{ row.order_id }}</span>
+
         </template>
       </el-table-column>
-      <el-table-column label="action" prop="status" align="center" min-width="150px">
+      <el-table-column label="Response" prop="response" min-width="200px" align="center">
+        <template v-slot="{ row }">
+          {{ row.response }}
+        </template>
+      </el-table-column>
+      <el-table-column label="เวลา/เวลา ล่าสุด" prop="createAt" min-width="100px" align="center">
+        <template v-slot="{ row }">
+          {{ moment(row.createAt).format('DD/MM/YYYY HH:mm') }}
+        </template>
+      </el-table-column>
+
+      <!-- <el-table-column label="action" prop="status" align="center" min-width="150px">
         <template v-slot="{ row }">
           <div class="text-center">
             <base-button type="primary" size="sm"
@@ -30,13 +42,14 @@
             <base-button type="danger" size="sm" @click="removeOptionById(row.id)">ลบ</base-button>
           </div>
         </template>
-      </el-table-column>
+      </el-table-column> -->
     </el-table>
-    <b-pagination class="mt-3 mr-3" :disabled="isLoading" @input="$emit('changePage',meta.currentPage)" v-model="meta.currentPage"
-      :per-page="perPage" :total-rows="meta.totalLength" align="right"></b-pagination>
+    <b-pagination class="mt-3 mr-3" :disabled="isLoading" @input="$emit('changePage',meta.currentPage)"
+      v-model="meta.currentPage" :per-page="perPage" :total-rows="meta.totalLength" align="right"></b-pagination>
   </b-card>
 </template>
 <script>
+import moment from 'moment'
 import { Table, TableColumn, DropdownMenu, DropdownItem, Dropdown } from 'element-ui'
 export default {
   name: 'page-visits-table',
@@ -63,26 +76,7 @@ export default {
     }
   },
   methods: {
-    async removeOptionById(id) {
-      const confirm = window.confirm("ยืนยันการทำรายการ ?");
-      if (confirm) {
-        const response = await this.$store.dispatch("category/removeCategory", id)
-        if (response.status) {
-          await this.$notify({
-            title: 'สำเร็จ !',
-            text: response.response.msg,
-            type: 'success',
-          });
-          await this.$store.dispatch("category/onFetchCategory", { page: 1, perPage: this.perPage })
-        } else {
-          this.$notify({
-            title: 'ล้มเหลว !',
-            text: response.response.msg,
-            type: 'error',
-          });
-        }
-      }
-    },
+    moment,
   }
 }
 </script>

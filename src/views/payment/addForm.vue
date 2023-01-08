@@ -2,8 +2,8 @@
   <card>
     <b-row align-v="center" slot="header">
       <b-col cols="12" class="d-flex align-items-center">
-        <h3 class="mb-0">แหล่งที่มา</h3>
-        <!-- <a class="ml-auto" href="https://www.wepay.in.th/comp_export.php" target="_blank">คู่มือสินค้า</a> -->
+        <h3 class="mb-0">เติมเงิน</h3>
+        <a class="ml-auto" href="https://www.wepay.in.th/comp_export.php" target="_blank">คู่มือสินค้า</a>
       </b-col>
       <!-- <b-col cols="4" class="text-right">
         <a href="#!" class="btn btn-sm btn-primary">Settings</a>
@@ -15,19 +15,21 @@
         <div class="pl-lg-4">
           <b-row>
             <b-col lg="6">
-              <base-input :rules="{ required: true }" name="Source" label="ชิ่อ"
-                placeholder="ํFacebook, Youtube, Google" v-model="marketing.name">
+              <base-input :rules="{ required: true }" name="Source" label="UID" placeholder="ข้อมูลตัวละคร"
+                v-model="form.pay_to_ref1">
               </base-input>
             </b-col>
             <b-col lg="6">
-              <base-input :rules="{ required: true }" name="Url" label="ลิงค์ช่อง" placeholder="https://yotube.com"
-                v-model="marketing.url">
+              <base-input type="number" step="any" :rules="{ required: true }" name="Url" label="จำนวนเงิน"
+                placeholder="จำนวนเงินที่ต้องการเติม" v-model="form.pay_to_amount">
               </base-input>
             </b-col>
             <b-col lg="12">
-              <base-input label="แหล่งที่มา" :rules="{ required: true }" name="SourceID">
-                <select class="form-control" v-model="marketing.sourceId">
-                  <option :value="source.id" v-for="(source, index) in source" :key="index">{{ source.name }}</option>
+              <base-input label="สินค้า" :rules="{ required: true }" name="SourceID">
+                <select class="form-control" v-model="form.pay_to_company">
+                  <option :value="product.pay_to_company" v-for="(product, index) in productList" :key="index">{{
+                    product.name
+                  }}</option>
                 </select>
               </base-input>
             </b-col>
@@ -43,31 +45,41 @@
 </template>
 <script>
 import { mapState } from 'vuex';
-
 export default {
+  async created() {
+    await this.$store.dispatch("product/onFetchProduct")
+  },
   computed: {
     ...mapState({
-      marketing: (state) => state.marketing.marketing,
-      source: (state) => state.source.sourceList,
+      productList: (state) => state.product.productList,
     })
   },
-  created() {
-    this.fetchData()
+  data() {
+    return {
+      form: {
+        pay_to_ref1: '',
+        pay_to_company: '',
+        pay_to_amount: ''
+      }
+    };
   },
   methods: {
-    async fetchData() {
-      await this.$store.dispatch("marketing/onFetchMarketingById", { id: this.$route.query.id })
-      await this.$store.dispatch("source/onFetchSource", { page: '', perPage: '' })
+    resetForm() {
+      this.form = {
+        name: '',
+        url: '',
+        sourceId: ''
+      }
     },
     async submitForm() {
-      const response = await this.$store.dispatch("marketing/updateMarketing", this.marketing)
+      const response = await this.$store.dispatch("payment/payment", this.form)
       if (response.status) {
         await this.$notify({
           title: 'สำเร็จ !',
           text: response.response.msg,
           type: 'success',
         });
-        this.$router.push("/marketing")
+        this.$router.push("/payment")
       } else {
         this.$notify({
           title: 'ล้มเหลว !',

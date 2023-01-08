@@ -86,7 +86,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <b-pagination class="mt-3 mr-3" @input="$emit('changePage',meta.currentPage)" v-model="meta.currentPage"
+    <b-pagination class="mt-3 mr-3" :disabled="isLoading" @input="$emit('changePage',meta.currentPage)" v-model="meta.currentPage"
       :per-page="perPage" :total-rows="meta.totalLength" align="right"></b-pagination>
   </b-card>
 </template>
@@ -111,6 +111,9 @@ export default {
     },
     perPage: {
       type: Number,
+    },
+    isLoading: {
+      type: Boolean,
     }
   },
   data() {

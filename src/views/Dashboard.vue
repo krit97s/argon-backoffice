@@ -122,7 +122,7 @@
       <!--Tables-->
       <b-row class="mt-5">
         <b-col cols="12" class="mb-5 mb-xl-0">
-          <page-visits-table :tableData="orderList" :meta="orderMeta" :perPage="perPage"
+          <page-visits-table :isLoading="isLoading" :tableData="orderList" :meta="orderMeta" :perPage="perPage"
             @changePage="changePage($event)"></page-visits-table>
         </b-col>
         <!-- <b-col xl="4" class="mb-5 mb-xl-0">
@@ -170,6 +170,7 @@ export default {
   },
   data() {
     return {
+      isLoading:false,
       perPage: 10,
       loadingStat: false,
       date: new moment().format('YYYY-MM'),
@@ -219,8 +220,10 @@ export default {
       })
     },
     fetchOrder(currentPage) {
+      this.isLoading = true
       this.$store.dispatch("order/onFetchOrder", { page: currentPage, perPage: this.perPage, date: this.date }).then(rs => {
         this.loadingOrder = false
+        this.isLoading = false
       })
     },
     previousMonth() {

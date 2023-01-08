@@ -6,7 +6,7 @@
 
       <b-row class="mt-5">
         <b-col cols="12" class="mb-5 mb-xl-0">
-          <page-visits-table :tableData="marketing" :meta="marketingMeta" :perPage="perPage"
+          <page-visits-table :isLoading="isLoading" :tableData="marketing" :meta="marketingMeta" :perPage="perPage"
             @changePage="changePage($event)"></page-visits-table>
         </b-col>
       </b-row>
@@ -32,6 +32,7 @@ export default {
   },
   data() {
     return {
+      isLoading:false,
       perPage: 10,
       loadingStat: false,
     };
@@ -41,7 +42,9 @@ export default {
       this.fetchData(currentPage)
     },
     async fetchData(currentPage) {
+      this.isLoading = true
       await this.$store.dispatch("marketing/onFetchMarketing", { page: currentPage || 1, perPage: this.perPage })
+      this.isLoading = false
     },
   },
   async created() {

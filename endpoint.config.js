@@ -25,5 +25,11 @@ export default {
     },
     marketing: {
         marketing: '/marketing'
+    },
+    report: {
+        report: '/report'
+    },
+    payment: {
+        payment: '/payment'
     }
 }

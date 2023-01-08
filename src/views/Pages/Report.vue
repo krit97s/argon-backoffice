@@ -6,7 +6,7 @@
 
       <b-row class="mt-5">
         <b-col cols="12" class="mb-5 mb-xl-0">
-          <page-visits-table :isLoading="isLoading" :tableData="deposit" :meta="depositMeta" :perPage="perPage"
+          <page-visits-table :isLoading="isLoading" :tableData="report" :meta="reportMeta" :perPage="perPage"
             @changePage="changePage($event)"></page-visits-table>
         </b-col>
       </b-row>
@@ -18,7 +18,7 @@
 import { mapState } from "vuex"
 
 // Tables
-import PageVisitsTable from '../deposit/PageVisitsTable.vue';
+import PageVisitsTable from '../report/PageVisitsTable.vue';
 
 export default {
   components: {
@@ -26,8 +26,8 @@ export default {
   },
   computed: {
     ...mapState({
-      deposit: (state) => state.deposit.depositList,
-      depositMeta: (state) => state.deposit.depositMeta,
+      report: (state) => state.report.reportList,
+      reportMeta: (state) => state.report.reportMeta,
     })
   },
   data() {
@@ -42,10 +42,9 @@ export default {
       this.fetchData(currentPage)
     },
     async fetchData(currentPage) {
-      this.isLoading= true
-      await this.$store.dispatch("deposit/onFetchDeposit", { page: currentPage || 1, perPage: this.perPage })
-      this.isLoading= false
-
+      this.isLoading = true
+      await this.$store.dispatch("report/onFetchReport", { page: currentPage || 1, perPage: this.perPage })
+      this.isLoading = false
     },
   },
   async created() {

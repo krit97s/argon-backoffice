@@ -10,12 +10,16 @@ import invest from './invest'
 import source from './source'
 import deposit from './deposit'
 import marketing from './marketing'
+import report from './report'
+import payment from './payment'
 
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
+    payment,
+    report,
     marketing,
     deposit,
     source,

@@ -14,9 +14,14 @@
         <h6 class="heading-small text-muted mb-4">ข้อมูลการลงทุน</h6>
         <div class="pl-lg-4">
           <b-row>
-            <b-col lg="12">
+            <b-col lg="6">
               <base-input type="number"  step="any" :rules="{ required: true }" name="Amount" label="จำนวนเงิน"
                 placeholder="จำวนเงิน" v-model="form.amount">
+              </base-input>
+            </b-col>
+            <b-col lg="6">
+              <base-input type="text"   :rules="{ required: true }" name="Remark" label="หมายุเหตุ"
+                placeholder="หมายเหตุ" v-model="form.remark">
               </base-input>
             </b-col>
             <b-col lg="12" class="mt-3 text-right">
@@ -43,6 +48,7 @@ export default {
     resetForm() {
       this.form = {
         amount: '',
+        remark:''
       }
     },
     async submitForm() {
