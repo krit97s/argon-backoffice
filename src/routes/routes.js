@@ -23,9 +23,84 @@ const routes = [
         component: () => import(/* webpackChunkName: "demo" */ '../views/Icons.vue')
       },
       {
-        path: '/profile',
-        name: 'profile',
-        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/UserProfile.vue')
+        path: '/source',
+        name: 'source',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Source.vue')
+      },
+      {
+        path: '/marketing',
+        name: 'marketing',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Marketing.vue')
+      },
+      {
+        path: '/invest',
+        name: 'invest',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Invest.vue')
+      },
+      {
+        path: '/deposit',
+        name: 'deposit',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Deposit.vue')
+      },
+      {
+        path: '/category',
+        name: 'category',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Category.vue')
+      },
+      {
+        path: '/product',
+        name: 'product',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Product.vue')
+      },
+      {
+        path: '/addmarketing',
+        name: 'add marketing',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/marketing/add.vue')
+      },
+      {
+        path: '/addproduct',
+        name: 'add product',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/product/add.vue')
+      },
+      {
+        path: '/addsource',
+        name: 'add source',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/source/add.vue')
+      },
+      {
+        path: '/addcategory',
+        name: 'add category',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/category/add.vue')
+      },
+      {
+        path: '/editmarketing',
+        name: 'edit marketing',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/marketing/edit.vue')
+      },
+      {
+        path: '/editsource',
+        name: 'edit source',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/source/edit.vue')
+      },
+      {
+        path: '/editcategory',
+        name: 'edit category',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/category/edit.vue')
+      },
+      {
+        path: '/addinvest',
+        name: 'add invest',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/invest/add.vue')
+      },
+      {
+        path: '/editinvest',
+        name: 'edit invest',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/invest/edit.vue')
+      },
+      {
+        path: '/editproduct',
+        name: 'edit product',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/product/edit.vue')
       },
       {
         path: '/maps',

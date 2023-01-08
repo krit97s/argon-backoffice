@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Header -->
-    <div class="header bg-gradient-success py-7 py-lg-8 pt-lg-9">
+    <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
       <div class="separator separator-bottom separator-skew zindex-100">
         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
           xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +29,7 @@
             </b-card-header> -->
             <b-card-body class="px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Back Office Management System</small>
+                <h2 class="text-primary font-weight-bold">BACK OFFICE</h2>
               </div>
               <validation-observer v-slot="{ handleSubmit }" ref="formValidator">
                 <b-form role="form" @submit.prevent="handleSubmit(onSubmit)">
@@ -41,9 +41,9 @@
                     v-model="model.password">
                   </base-input>
 
-                  <b-form-checkbox v-model="model.rememberMe">Remember me</b-form-checkbox>
+                  <!-- <b-form-checkbox v-model="model.rememberMe">Remember me</b-form-checkbox> -->
                   <div class="text-center">
-                    <base-button type="primary" native-type="submit" class="my-4">Login</base-button>
+                    <base-button type="primary" block native-type="submit">Login</base-button>
                   </div>
                 </b-form>
               </validation-observer>
