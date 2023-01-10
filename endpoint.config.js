@@ -1,4 +1,4 @@
-import marketing from "./src/store/marketing";
+
 
 export default {
     dashboard: {
@@ -31,5 +31,11 @@ export default {
     },
     payment: {
         payment: '/payment'
+    },
+    carousel: {
+        carousel: '/carousel'
+    },
+    anounce: {
+        anounce: '/anounce'
     }
 }

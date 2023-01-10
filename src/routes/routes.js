@@ -33,6 +33,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Source.vue')
       },
       {
+        path: '/anounce',
+        name: 'anounce',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Anounce.vue')
+      },
+      {
+        path: '/carousel',
+        name: 'carousel',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Carousel.vue')
+      },
+      {
         path: '/marketing',
         name: 'marketing',
         component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Marketing.vue')
@@ -68,6 +78,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "demo" */ '../views/marketing/add.vue')
       },
       {
+        path: '/addanounce',
+        name: 'add anounce',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/anounce/add.vue')
+      },
+      {
+        path: '/addcarousel',
+        name: 'add carousel',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/carousel/add.vue')
+      },
+      {
         path: '/addproduct',
         name: 'add product',
         component: () => import(/* webpackChunkName: "demo" */ '../views/product/add.vue')
@@ -86,6 +106,16 @@ const routes = [
         path: '/editmarketing',
         name: 'edit marketing',
         component: () => import(/* webpackChunkName: "demo" */ '../views/marketing/edit.vue')
+      },
+      {
+        path: '/editanounce',
+        name: 'edit anounce',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/anounce/edit.vue')
+      },
+      {
+        path: '/editcarousel',
+        name: 'edit carousel',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/carousel/edit.vue')
       },
       {
         path: '/editsource',

@@ -29,18 +29,30 @@
 
         </sidebar-item>
         <sidebar-item :link="{
+          name: 'จัดการประกาศ',
+          path: '/anounce',
+          icon: 'ni ni-notification-70 text-orange'
+        }">
+        </sidebar-item>
+        <sidebar-item :link="{
           name: 'จัดการหมวดหมู่',
           path: '/category',
           icon: 'ni ni-folder-17 text-blue'
         }">
         </sidebar-item>
-
+        <sidebar-item :link="{
+          name: 'จัดการแบนเนอร์',
+          path: '/carousel',
+          icon: 'ni ni-image text-yellow'
+        }">
+        </sidebar-item>
         <sidebar-item :link="{
           name: 'จัดการการตลาด',
           path: '/marketing',
           icon: 'ni ni-key-25 text-info'
         }">
         </sidebar-item>
+
 
         <sidebar-item :link="{
           name: 'จัดการแหล่งที่มา',

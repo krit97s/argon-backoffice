@@ -122,8 +122,12 @@
       <!--Tables-->
       <b-row class="mt-5">
         <b-col cols="12" class="mb-5 mb-xl-0">
-          <page-visits-table :isLoading="isLoading" :tableData="orderList" :meta="orderMeta" :perPage="perPage"
-            @changePage="changePage($event)"></page-visits-table>
+          <page-visits-table :isLoading="isLoadingOrder" :tableData="orderList" :meta="orderMeta" :perPage="perPageOrder"
+            @changePage="changePageOrder($event)"></page-visits-table>
+        </b-col>
+        <b-col cols="12" class="my-3 mb-xl-0">
+          <depositTable :isLoading="isLoadingDeposit" :tableData="deposit" :meta="depositMeta" :perPage="perPageDeposit"
+            @changePage="changePageDeposit($event)"></depositTable>
         </b-col>
         <!-- <b-col xl="4" class="mb-5 mb-xl-0">
           <social-traffic-table></social-traffic-table>
@@ -150,9 +154,11 @@ import StatsCard from '@/components/Cards/StatsCard';
 // Tables
 import SocialTrafficTable from './Dashboard/SocialTrafficTable';
 import PageVisitsTable from './Dashboard/PageVisitsTable';
+import depositTable from './deposit/PageVisitsTable.vue';
 
 export default {
   components: {
+    depositTable,
     Skeleton,
     LineChart,
     BarChart,
@@ -166,12 +172,16 @@ export default {
       orderMeta: (state) => state.order.orderMeta,
       overAll: (state) => state.dashboard.overall,
       orderList: (state) => state.order.orderList,
+      deposit: (state) => state.deposit.depositList,
+      depositMeta: (state) => state.deposit.depositMeta,
     })
   },
   data() {
     return {
-      isLoading:false,
-      perPage: 10,
+      isLoadingOrder: false,
+      isLoadingDeposit: false,
+      perPageOrder: 10,
+      perPageDeposit: 5,
       loadingStat: false,
       date: new moment().format('YYYY-MM'),
       startDate: new moment().format('YYYY-MM'),
@@ -206,8 +216,17 @@ export default {
     };
   },
   methods: {
-    changePage(currentPage) {
+    changePageOrder(currentPage) {
       this.fetchOrder(currentPage)
+    },
+    changePageDeposit(currentPage) {
+      this.fetchDeposit(currentPage)
+    },
+    async fetchDeposit(currentPage) {
+      this.isLoadingDeposit= true
+      await this.$store.dispatch("deposit/onFetchDeposit", { page: currentPage || 1, perPage: this.perPageDeposit })
+      this.isLoadingDeposit= false
+
     },
     async fetchOverAll() {
       this.loadingStat = true
@@ -215,15 +234,15 @@ export default {
       this.$store.dispatch("dashboard/onFetchOverAll", this.date).then(rs => {
         this.loadingStat = false
       })
-      this.$store.dispatch("order/onFetchOrder", { page: 1, perPage: this.perPage, date: this.date }).then(rs => {
+      this.$store.dispatch("order/onFetchOrder", { page: 1, perPage: this.perPageOrder   , date: this.date }).then(rs => {
         this.loadingOrder = false
       })
     },
     fetchOrder(currentPage) {
-      this.isLoading = true
-      this.$store.dispatch("order/onFetchOrder", { page: currentPage, perPage: this.perPage, date: this.date }).then(rs => {
+      this.isLoadingOrder = true
+      this.$store.dispatch("order/onFetchOrder", { page: currentPage, perPage: this.perPageOrder, date: this.date }).then(rs => {
         this.loadingOrder = false
-        this.isLoading = false
+        this.isLoadingOrder = false
       })
     },
     previousMonth() {
@@ -254,6 +273,7 @@ export default {
   },
   async created() {
     this.fetchOverAll()
+    this.fetchDeposit()
   }
 
 };

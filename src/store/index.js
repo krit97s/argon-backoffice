@@ -12,12 +12,16 @@ import deposit from './deposit'
 import marketing from './marketing'
 import report from './report'
 import payment from './payment'
+import carousel from './carousel'
+import anounce from './anounce'
 
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
+    anounce,
+    carousel,
     payment,
     report,
     marketing,
