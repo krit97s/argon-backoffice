@@ -15,7 +15,7 @@
           </div>
         </button>
         <div class="ml-auto" style="position:absolute; right:0; top:35px;">
-          <b-form-checkbox v-model="item.enable" @input="onChangeStatus(item)" name="check-button" switch>
+          <b-form-checkbox v-model="item.enable" @change="onChangeStatus(item)" name="check-button" switch>
           </b-form-checkbox>
         </div>
       </b-col>
@@ -48,21 +48,21 @@ export default {
   },
   methods: {
     async onChangeStatus(item) {
-      console.log(item)
-      // const response = await this.$store.dispatch("product/updateProduct", item)
-      // if (response.status) {
-      //   await this.$notify({
-      //     title: 'สำเร็จ !',
-      //     text: response.response.msg,
-      //     type: 'success',
-      //   });
-      // } else {
-      //   this.$notify({
-      //     title: 'ล้มเหลว !',
-      //     text: response.response.msg,
-      //     type: 'error',
-      //   });
-      // }
+     let payload = JSON.parse(JSON.stringify(item))
+      const response = await this.$store.dispatch("product/updateProduct", payload)
+      if (response.status) {
+        await this.$notify({
+          title: 'สำเร็จ !',
+          text: response.response.msg,
+          type: 'success',
+        });
+      } else {
+        this.$notify({
+          title: 'ล้มเหลว !',
+          text: response.response.msg,
+          type: 'error',
+        });
+      }
     }
   },
   data() {
