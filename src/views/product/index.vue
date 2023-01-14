@@ -15,7 +15,8 @@
           </div>
         </button>
         <div class="ml-auto" style="position:absolute; right:0; top:35px;">
-          <b-form-checkbox v-model="item.enable" @change="onChangeStatus(item.enable)" name="check-button-product-enable" switch>
+          {{ item.enable }}
+          <b-form-checkbox v-model="item.enable" @change="onChangeStatus(item)" name="check-button-product-enable" switch>
           </b-form-checkbox>
         </div>
       </b-col>
@@ -47,10 +48,8 @@ export default {
     }
   },
   methods: {
-    async onChangeStatus(status) {
-      alert(status)
-     let payload = JSON.parse(JSON.stringify(this.items))
-     payload.enable = status
+    async onChangeStatus(item) {
+     let payload = JSON.parse(JSON.stringify(item))
       const response = await this.$store.dispatch("product/updateProduct", payload)
       if (response.status) {
         await this.$notify({
