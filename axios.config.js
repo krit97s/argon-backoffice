@@ -1,17 +1,16 @@
 
 import axios from 'axios'
 
-export const instance = axios.create({
+const instance = axios.create({
     baseURL: process.env.VUE_APP_ROOT_API,
 })
-
+instance.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 instance.interceptors.request.use(
     config => {
         const token = localStorage.getItem('token')
         token
             ? (config.headers.Authorization = `${token}`)
             : ''
-        config.headers.common['Access-Control-Allow-Origin'] = '*'
         return config
     },
     err => Promise.reject(err),
@@ -27,3 +26,8 @@ instance.interceptors.response.use(
         return Promise.reject(error)
     },
 )
+
+
+export default {
+    instance
+}
