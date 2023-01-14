@@ -7,12 +7,11 @@ export const instance = axios.create({
 
 instance.interceptors.request.use(
     config => {
-        config.withCredentials = true
         const token = localStorage.getItem('token')
         token
             ? (config.headers.Authorization = `${token}`)
             : ''
-
+        config.headers.common['Access-Control-Allow-Origin'] = '*'
         return config
     },
     err => Promise.reject(err),
