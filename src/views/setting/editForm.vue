@@ -2,7 +2,7 @@
   <card>
     <b-row align-v="center" slot="header">
       <b-col cols="12" class="d-flex align-items-center">
-        <h3 class="mb-0">การลงทุน</h3>
+        <h3 class="mb-0">แก้ไขตั้งค่า</h3>
         <!-- <a class="ml-auto" href="https://www.wepay.in.th/comp_export.php" target="_blank">คู่มือสินค้า</a> -->
       </b-col>
       <!-- <b-col cols="4" class="text-right">
@@ -11,22 +11,12 @@
     </b-row>
     <validation-observer v-slot="{ handleSubmit }" ref="formValidator">
       <b-form @submit.prevent="handleSubmit(submitForm)">
-        <h6 class="heading-small text-muted mb-4">ข้อมูลการลงทุน</h6>
+        <h6 class="heading-small text-muted mb-4">ข้อมูลตั้งค่า</h6>
         <div class="pl-lg-4">
           <b-row>
-            <b-col lg="6">
-              <base-input type="number" step="any" :rules="{ required: true }" name="Amount" label="จำนวนเงิน"
-                placeholder="จำวนเงิน" v-model="form.amount">
-              </base-input>
-            </b-col>
-            <b-col lg="6">
-              <base-input  name="Order Id" label="หมายเลขออเดอร์ (หากไม่มีให้เว้นว่าง)"
-                placeholder="หมายเลขออเดอร์" v-model="form.order_id">
-              </base-input>
-            </b-col>
             <b-col lg="12">
-              <base-input type="text" :rules="{ required: true }" name="Remark" label="หมายุเหตุ" placeholder="หมายเหตุ"
-                v-model="form.remark">
+              <base-input :rules="{ required: true }" name="Value" label="Value" placeholder="Value"
+                v-model="setting.value">
               </base-input>
             </b-col>
             <b-col lg="12" class="mt-3 text-right">
@@ -41,35 +31,30 @@
   </card>
 </template>
 <script>
+import { mapState } from 'vuex';
+
 export default {
-  data() {
-    return {
-      form: {
-        amount: '',
-        order_id: '',
-        remark: '',
-        by: 0
-      }
-    };
+  computed: {
+    ...mapState({
+      setting: (state) => state.setting.setting,
+    })
+  },
+  created() {
+    this.fetchData()
   },
   methods: {
-    resetForm() {
-      this.form = {
-        amount: '',
-        order_id: '',
-        remark: '',
-        by: 0
-      }
+    async fetchData() {
+      await this.$store.dispatch("setting/onFetchSettingById", { id: this.$route.query.id })
     },
     async submitForm() {
-      const response = await this.$store.dispatch("invest/addInvest", this.form)
+      const response = await this.$store.dispatch("setting/updateSetting", this.setting)
       if (response.status) {
         await this.$notify({
           title: 'สำเร็จ !',
           text: response.response.msg,
           type: 'success',
         });
-        this.$router.push("/invest")
+        this.$router.push("/setting")
       } else {
         this.$notify({
           title: 'ล้มเหลว !',

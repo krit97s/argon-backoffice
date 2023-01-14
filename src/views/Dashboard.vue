@@ -17,7 +17,7 @@
 
       <b-row v-if="!loadingStat">
         <b-col xl="3" md="6">
-          <stats-card title="กำไร" type="gradient-green"
+          <stats-card title="กำไร" type="gradient-green" bindColor
             :sub-title="overAll.totalProfit.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })"
             icon="ni ni-money-coins" class="mb-4">
             <template slot="footer">
@@ -122,8 +122,8 @@
       <!--Tables-->
       <b-row class="mt-5">
         <b-col cols="12" class="mb-5 mb-xl-0">
-          <page-visits-table :isLoading="isLoadingOrder" :tableData="orderList" :meta="orderMeta" :perPage="perPageOrder"
-            @changePage="changePageOrder($event)"></page-visits-table>
+          <page-visits-table :isLoading="isLoadingOrder" :tableData="orderList" :meta="orderMeta"
+            :perPage="perPageOrder" @changePage="changePageOrder($event)"></page-visits-table>
         </b-col>
         <b-col cols="12" class="my-3 mb-xl-0">
           <depositTable :isLoading="isLoadingDeposit" :tableData="deposit" :meta="depositMeta" :perPage="perPageDeposit"
@@ -223,9 +223,9 @@ export default {
       this.fetchDeposit(currentPage)
     },
     async fetchDeposit(currentPage) {
-      this.isLoadingDeposit= true
+      this.isLoadingDeposit = true
       await this.$store.dispatch("deposit/onFetchDeposit", { page: currentPage || 1, perPage: this.perPageDeposit })
-      this.isLoadingDeposit= false
+      this.isLoadingDeposit = false
 
     },
     async fetchOverAll() {
@@ -234,7 +234,7 @@ export default {
       this.$store.dispatch("dashboard/onFetchOverAll", this.date).then(rs => {
         this.loadingStat = false
       })
-      this.$store.dispatch("order/onFetchOrder", { page: 1, perPage: this.perPageOrder   , date: this.date }).then(rs => {
+      this.$store.dispatch("order/onFetchOrder", { page: 1, perPage: this.perPageOrder, date: this.date }).then(rs => {
         this.loadingOrder = false
       })
     },

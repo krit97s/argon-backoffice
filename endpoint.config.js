@@ -37,5 +37,8 @@ export default {
     },
     anounce: {
         anounce: '/anounce'
+    },
+    setting: {
+        setting: '/setting'
     }
 }

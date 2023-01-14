@@ -4,11 +4,10 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col class="d-flex align-items-center">
-          <h3 class="mb-0">จัดการหมวดหมู่</h3>
+          <h3 class="mb-0">จัดการตั้งค่า</h3>
           <base-button class="ml-auto" type="primary" size="sm"
             @click="$emit('changePage', meta.currentPage)">&#8634;</base-button>
-          <base-button size="sm" type="primary"
-            @click="$router.push(`/addcategory`)">เพิ่มหมวดหมู่</base-button>
+          <!-- <base-button size="sm" type="primary" @click="$router.push(`/addanounce`)">เพิ่มข้อมูล</base-button> -->
         </b-col>
       </b-row>
     </template>
@@ -19,23 +18,29 @@
           <div class="font-weight-600 text-primary text-nowrap">{{ tableData.indexOf(row) + 1 }}</div>
         </template>
       </el-table-column>
-      <el-table-column label="name" prop="type" min-width="150px">
+      <el-table-column label="ประเภท" prop="type" min-width="150px">
         <template v-slot="{ row }">
-          <b-badge pill variant='primary'> {{ row.name }}</b-badge>
+          {{ row.type }}
+        </template>
+      </el-table-column>
+      <el-table-column label="สถานะ" prop="enable">
+        <template v-slot="{ row }">
+          <b-form-checkbox @change="submitForm(row)" :disabled="row.type === 'QR_APP' ? true : false"
+            name="check-button" v-model="row.enable" switch>
+          </b-form-checkbox>
         </template>
       </el-table-column>
       <el-table-column label="action" prop="status" align="center" min-width="150px">
         <template v-slot="{ row }">
           <div class="text-center">
-            <base-button type="primary" size="sm"
-              @click="$router.push(`/editcategory?id=${row.id}`)">แก้ไข</base-button>
-            <base-button type="danger" size="sm" @click="removeOptionById(row.id)">ลบ</base-button>
+            <base-button type="primary" size="sm" @click="$router.push(`/editsetting?id=${row.id}`)">แก้ไข</base-button>
+            <!-- <base-button type="danger" size="sm" @click="removeOptionById(row.id)">ลบ</base-button> -->
           </div>
         </template>
       </el-table-column>
     </el-table>
-    <b-pagination class="mt-3 mr-3" :disabled="isLoading" @input="$emit('changePage',meta.currentPage)" v-model="meta.currentPage"
-      :per-page="perPage" :total-rows="meta.totalLength" align="right"></b-pagination>
+    <b-pagination class="mt-3 mr-3" :disabled="isLoading" @input="$emit('changePage',meta.currentPage)"
+      v-model="meta.currentPage" :per-page="perPage" :total-rows="meta.totalLength" align="right"></b-pagination>
   </b-card>
 </template>
 <script>
@@ -65,24 +70,21 @@ export default {
     }
   },
   methods: {
-    async removeOptionById(id) {
-      const confirm = window.confirm("ยืนยันการทำรายการ ?");
-      if (confirm) {
-        const response = await this.$store.dispatch("category/removeCategory", id)
-        if (response.status) {
-          await this.$notify({
-            title: 'สำเร็จ !',
-            text: response.response.msg,
-            type: 'success',
-          });
-          await this.$store.dispatch("category/onFetchCategory", { page: 1, perPage: this.perPage })
-        } else {
-          this.$notify({
-            title: 'ล้มเหลว !',
-            text: response.response.msg,
-            type: 'error',
-          });
-        }
+    async submitForm(item) {
+      const response = await this.$store.dispatch("setting/updateSetting", item)
+      if (response.status) {
+        await this.$notify({
+          title: 'สำเร็จ !',
+          text: response.response.msg,
+          type: 'success',
+        });
+        await this.$store.dispatch("setting/onFetchSetting", { page: 1, perPage: this.perPage })
+      } else {
+        this.$notify({
+          title: 'ล้มเหลว !',
+          text: response.response.msg,
+          type: 'error',
+        });
       }
     },
   }

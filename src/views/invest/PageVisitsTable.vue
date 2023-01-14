@@ -5,7 +5,9 @@
       <b-row align-v="center">
         <b-col class="d-flex align-items-center">
           <h3 class="mb-0">ลงทุน</h3>
-          <base-button size="sm" class="ml-auto" type="primary"
+          <base-button class="ml-auto" type="primary" size="sm"
+            @click="$emit('changePage', meta.currentPage)">&#8634;</base-button>
+          <base-button size="sm"  type="primary"
             @click="$router.push(`/addinvest`)">เพิ่มการลงทุน</base-button>
         </b-col>
       </b-row>
@@ -22,9 +24,24 @@
           {{ row.amount.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 }) }}
         </template>
       </el-table-column>
+            
+      <el-table-column label="หมายเลขออเดอร์" prop="order_id" min-width="150px">
+        <template v-slot="{ row }">
+          {{ row.order_id }}
+        </template>
+      </el-table-column>
       <el-table-column label="หมายเหตุ" prop="remark" min-width="150px">
         <template v-slot="{ row }">
           {{ row.remark }}
+        </template>
+      </el-table-column>
+      <el-table-column label="จัดการโดย" prop="by" min-width="150px" align="center">
+        <template v-slot="{ row }">
+  
+          <b-badge pill :variant="row.by  == 0 ? 'primary' : 'success'"> {{
+            row.by == 0 ?
+              'Manual' : 'System'
+          }}</b-badge>
         </template>
       </el-table-column>
       <el-table-column label="วันเวลา" prop="createAt" min-width="170px" align="center">
@@ -42,8 +59,8 @@
         </template>
       </el-table-column>
     </el-table>
-    <b-pagination class="mt-3 mr-3" :disabled="isLoading" @input="$emit('changePage',meta.currentPage)" v-model="meta.currentPage"
-      :per-page="perPage" :total-rows="meta.totalLength" align="right"></b-pagination>
+    <b-pagination class="mt-3 mr-3" :disabled="isLoading" @input="$emit('changePage',meta.currentPage)"
+      v-model="meta.currentPage" :per-page="perPage" :total-rows="meta.totalLength" align="right"></b-pagination>
   </b-card>
 </template>
 <script>

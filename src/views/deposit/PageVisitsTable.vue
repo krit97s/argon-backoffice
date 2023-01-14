@@ -5,8 +5,8 @@
       <b-row align-v="center">
         <b-col class="d-flex align-items-center">
           <h3 class="mb-0">รายการฝาก</h3>
-          <!-- <base-button size="sm" class="ml-auto" type="primary"
-            @click="$router.push(`/addcategory`)">เพิ่มหมวดหมู่</base-button> -->
+          <base-button class="ml-auto" type="primary" size="sm"
+            @click="$emit('changePage', meta.currentPage)">&#8634;</base-button>
         </b-col>
       </b-row>
     </template>

@@ -6,15 +6,9 @@
 
       <b-row class="mt-5">
         <b-col cols="12" class="mb-5 mb-xl-0">
-          <page-visits-table :isLoading="isLoading" :tableData="report" :meta="reportMeta" :perPage="perPage"
+          <page-visits-table :isLoading="isLoading" :tableData="setting" :meta="settingMeta" :perPage="perPage"
             @changePage="changePage($event)"></page-visits-table>
-
         </b-col>
-        <!-- <b-col cols="12" class="mb-5 mb-xl-0 mt-2">
-          <page-visits-table :isLoading="isLoading" :tableData="report" :meta="reportMeta" :perPage="perPage"
-            @changePage="changePage($event)"></page-visits-table>
-
-        </b-col> -->
       </b-row>
     </b-container>
   </div>
@@ -24,7 +18,7 @@
 import { mapState } from "vuex"
 
 // Tables
-import PageVisitsTable from '../report/PageVisitsTable.vue';
+import PageVisitsTable from '../setting/PageVisitsTable.vue';
 
 export default {
   components: {
@@ -32,8 +26,8 @@ export default {
   },
   computed: {
     ...mapState({
-      report: (state) => state.report.reportList,
-      reportMeta: (state) => state.report.reportMeta,
+      setting: (state) => state.setting.settingList,
+      settingMeta: (state) => state.setting.settingMeta,
     })
   },
   data() {
@@ -49,7 +43,7 @@ export default {
     },
     async fetchData(currentPage) {
       this.isLoading = true
-      await this.$store.dispatch("report/onFetchReport", { page: currentPage || 1, perPage: this.perPage })
+      await this.$store.dispatch("setting/onFetchSetting", { page: currentPage || 1, perPage: this.perPage })
       this.isLoading = false
     },
   },

@@ -68,6 +68,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Category.vue')
       },
       {
+        path: '/setting',
+        name: 'setting',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Setting.vue')
+      },
+      {
         path: '/product',
         name: 'product',
         component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Product.vue')
@@ -106,6 +111,11 @@ const routes = [
         path: '/editmarketing',
         name: 'edit marketing',
         component: () => import(/* webpackChunkName: "demo" */ '../views/marketing/edit.vue')
+      },
+      {
+        path: '/editsetting',
+        name: 'edit setting',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/setting/edit.vue')
       },
       {
         path: '/editanounce',

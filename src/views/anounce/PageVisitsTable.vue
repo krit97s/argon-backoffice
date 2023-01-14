@@ -5,8 +5,9 @@
       <b-row align-v="center">
         <b-col class="d-flex align-items-center">
           <h3 class="mb-0">จัดการประกาศ</h3>
-          <base-button size="sm" class="ml-auto" type="primary"
-            @click="$router.push(`/addanounce`)">เพิ่มข้อมูล</base-button>
+          <base-button class="ml-auto" type="primary" size="sm"
+            @click="$emit('changePage', meta.currentPage)">&#8634;</base-button>
+          <base-button size="sm" type="primary" @click="$router.push(`/addanounce`)">เพิ่มข้อมูล</base-button>
         </b-col>
       </b-row>
     </template>
@@ -19,14 +20,13 @@
       </el-table-column>
       <el-table-column label="เนื้อหา" prop="type" min-width="150px">
         <template v-slot="{ row }">
-          {{row.text}}
+          {{ row.text }}
         </template>
       </el-table-column>
       <el-table-column label="action" prop="status" align="center" min-width="150px">
         <template v-slot="{ row }">
           <div class="text-center">
-            <base-button type="primary" size="sm"
-              @click="$router.push(`/editanounce?id=${row.id}`)">แก้ไข</base-button>
+            <base-button type="primary" size="sm" @click="$router.push(`/editanounce?id=${row.id}`)">แก้ไข</base-button>
             <base-button type="danger" size="sm" @click="removeOptionById(row.id)">ลบ</base-button>
           </div>
         </template>

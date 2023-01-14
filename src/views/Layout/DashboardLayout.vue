@@ -18,38 +18,38 @@
         <sidebar-item :link="{
           name: 'จัดการสินค้า',
           path: '/product',
-          icon: 'ni ni-box-2 text-purple'
+          icon: 'ni ni-box-2 text-primary'
         }">
         </sidebar-item>
         <sidebar-item :link="{
           name: 'จัดการต้นทุน',
           path: '/invest',
-          icon: 'ni ni-money-coins text-green'
+          icon: 'ni ni-money-coins text-primary'
         }">
 
         </sidebar-item>
         <sidebar-item :link="{
           name: 'จัดการประกาศ',
           path: '/anounce',
-          icon: 'ni ni-notification-70 text-orange'
+          icon: 'ni ni-notification-70 text-primary'
         }">
         </sidebar-item>
         <sidebar-item :link="{
           name: 'จัดการหมวดหมู่',
           path: '/category',
-          icon: 'ni ni-folder-17 text-blue'
+          icon: 'ni ni-folder-17 text-primary'
         }">
         </sidebar-item>
         <sidebar-item :link="{
           name: 'จัดการแบนเนอร์',
           path: '/carousel',
-          icon: 'ni ni-image text-yellow'
+          icon: 'ni ni-image text-primary'
         }">
         </sidebar-item>
         <sidebar-item :link="{
           name: 'จัดการการตลาด',
           path: '/marketing',
-          icon: 'ni ni-key-25 text-info'
+          icon: 'ni ni-key-25 text-primary'
         }">
         </sidebar-item>
 
@@ -57,20 +57,26 @@
         <sidebar-item :link="{
           name: 'จัดการแหล่งที่มา',
           path: '/source',
-          icon: 'ni ni-world-2 text-orange'
+          icon: 'ni ni-world-2 text-primary'
         }">
         </sidebar-item>
 
         <sidebar-item :link="{
           name: 'จัดการรายการฝาก',
           path: '/deposit',
-          icon: 'fa fa-university text-red'
+          icon: 'fa fa-university text-primary'
         }">
         </sidebar-item>
         <sidebar-item :link="{
           name: 'รายงานสถานะออเดอร์',
           path: '/report',
-          icon: 'ni ni-cart text-pink'
+          icon: 'ni ni-cart text-primary'
+        }">
+        </sidebar-item>
+        <sidebar-item :link="{
+          name: 'จัดการการตั้งค่า',
+          path: '/setting',
+          icon: 'ni ni-settings text-primary'
         }">
         </sidebar-item>
       </template>

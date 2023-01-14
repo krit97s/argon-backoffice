@@ -14,12 +14,14 @@ import report from './report'
 import payment from './payment'
 import carousel from './carousel'
 import anounce from './anounce'
+import setting from './setting'
 
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
+    setting,
     anounce,
     carousel,
     payment,

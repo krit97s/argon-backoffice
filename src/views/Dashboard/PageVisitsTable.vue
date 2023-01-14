@@ -3,9 +3,12 @@
   <b-card body-class="p-0" header-class="border-0">
     <template v-slot:header>
       <b-row align-v="center">
-        <b-col>
+        <b-col class="d-flex align-items-center">
           <h3 class="mb-0">รายการออเดอร์</h3>
+          <base-button type="primary" class="ml-auto" size="sm"
+            @click="$emit('changePage', meta.currentPage)">&#8634;</base-button>
         </b-col>
+
       </b-row>
     </template>
 
@@ -86,8 +89,8 @@
         </template>
       </el-table-column>
     </el-table>
-    <b-pagination class="mt-3 mr-3" :disabled="isLoading" @input="$emit('changePage',meta.currentPage)" v-model="meta.currentPage"
-      :per-page="perPage" :total-rows="meta.totalLength" align="right"></b-pagination>
+    <b-pagination class="mt-3 mr-3" :disabled="isLoading" @input="$emit('changePage',meta.currentPage)"
+      v-model="meta.currentPage" :per-page="perPage" :total-rows="meta.totalLength" align="right"></b-pagination>
   </b-card>
 </template>
 <script>

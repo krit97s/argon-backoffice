@@ -5,7 +5,9 @@
       <b-row align-v="center">
         <b-col class="d-flex align-items-center">
           <h3 class="mb-0">การตลาด</h3>
-          <base-button size="sm" class="ml-auto" type="primary"
+          <base-button class="ml-auto" type="primary" size="sm"
+            @click="$emit('changePage', meta.currentPage)">&#8634;</base-button>
+          <base-button size="sm"  type="primary"
             @click="$router.push(`/addmarketing`)">เพิ่มข้อมูล</base-button>
         </b-col>
       </b-row>
