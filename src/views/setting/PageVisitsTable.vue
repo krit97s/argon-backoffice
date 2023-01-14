@@ -71,7 +71,8 @@ export default {
   },
   methods: {
     async submitForm(item) {
-      const response = await this.$store.dispatch("setting/updateSetting", item)
+      let payload = JSON.parse(JSON.stringify(item))
+      const response = await this.$store.dispatch("setting/updateSetting", payload)
       if (response.status) {
         await this.$notify({
           title: 'สำเร็จ !',
