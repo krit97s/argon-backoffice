@@ -26,7 +26,7 @@
       <el-table-column label="สถานะ" prop="enable">
         <template v-slot="{ row }">
           <b-form-checkbox @change="submitForm(row)" :disabled="row.type === 'QR_APP' ? true : false"
-            name="check-button" v-model="row.enable" switch>
+            name="check-button-setting" v-model="row.enable" switch>
           </b-form-checkbox>
         </template>
       </el-table-column>

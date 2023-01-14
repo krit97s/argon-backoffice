@@ -77,7 +77,7 @@
                     :rules="{ required: true }" name="Discount" placeholder="กรุณาวางลิงค์รูปภาพ" v-model="option.dis">
                   </base-input></b-col>
                 <b-col cols="12" lg="2" class="d-flex justify-content-end align-items-lg-center">
-                  <b-form-checkbox name="check-button" v-model="option.enable" switch>
+                  <b-form-checkbox name="check-button-option" v-model="option.enable" switch>
                   </b-form-checkbox>
                   <base-button type="danger" size="sm" class="px-2" @click="removeOptionById(option.id)"><i
                       class="fa fa-trash " aria-hidden="true"></i></base-button></b-col>
@@ -94,10 +94,10 @@
                   aria-hidden="true"></i>เพิ่มตัวเลือก</base-button>
             </b-col>
             <b-col lg="12">
-              <b-form-checkbox name="check-button" v-model="product.isSpecial" switch>
+              <b-form-checkbox name="check-button-edit-special" v-model="product.isSpecial" switch>
                 สินค้าพิเศษ
               </b-form-checkbox>
-              <b-form-checkbox name="check-button" v-model="product.isWait" switch>
+              <b-form-checkbox name="check-button-edit-no-wait" v-model="product.isWait" switch>
                 เติมแล้วไม่เข้าทันที (ต้องรอ)
               </b-form-checkbox>
 

@@ -15,7 +15,7 @@
           </div>
         </button>
         <div class="ml-auto" style="position:absolute; right:0; top:35px;">
-          <b-form-checkbox v-model="item.enable" @change="onChangeStatus(item)" name="check-button" switch>
+          <b-form-checkbox v-model="item.enable" @change="onChangeStatus(item)" name="check-button-product-enable" switch>
           </b-form-checkbox>
         </div>
       </b-col>

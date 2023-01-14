@@ -57,10 +57,10 @@
               </base-input>
             </b-col>
             <b-col lg="12">
-              <b-form-checkbox name="check-button" v-model="form.isSpecial" switch>
+              <b-form-checkbox name="check-button-special" v-model="form.isSpecial" switch>
                 สินค้าพิเศษ
               </b-form-checkbox>
-              <b-form-checkbox name="check-button" v-model="form.isWait" switch>
+              <b-form-checkbox name="check-button-no-wait" v-model="form.isWait" switch>
                 เติมแล้วไม่เข้าทันที (ต้องรอ)
               </b-form-checkbox>
 
