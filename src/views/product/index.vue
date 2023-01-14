@@ -48,7 +48,8 @@ export default {
   },
   methods: {
     async onChangeStatus(status) {
-     let payload = JSON.parse(JSON.stringify(item))
+      alert(status)
+     let payload = JSON.parse(JSON.stringify(this.items))
      payload.enable = status
       const response = await this.$store.dispatch("product/updateProduct", payload)
       if (response.status) {
