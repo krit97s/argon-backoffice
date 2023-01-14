@@ -52,7 +52,7 @@ export default {
     async updateProduct({ commit }, data) {
         try {
             const url = `${ENDPOINT_CONFIG.product.product}`
-            const response = await INSTANCE.patch(url, data)
+            const response = await INSTANCE.post(url, data)
             return { status: true, response: response.data }
         } catch (error) {
             return { status: false, response: error.response.data }
