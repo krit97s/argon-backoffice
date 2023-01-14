@@ -20,7 +20,7 @@
       <el-table-column label="ธนาคาร" prop="type" min-width="100px">
         <template v-slot="{ row }">
           <span class="avatar avatar-sm rounded-circle">
-            <img :src="showImg(row.type)">
+            <img :src="showImg(row.type)" width="100%" height="100%">
           </span>
         </template>
       </el-table-column>
