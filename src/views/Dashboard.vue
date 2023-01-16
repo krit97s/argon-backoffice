@@ -5,8 +5,8 @@
       <!-- Card stats -->
       <div class="d-flex flex-sm-row flex-column mb-2 mb-sm-0">
         <div class="d-sm-flex">
-          <base-input type="month" class="w-sm-100" input-classes="form-control-sm" v-model="startDate" id="example-month-input" />
-          <base-input type="month" input-classes="form-control-sm w-sm-100" class="ml-1 " v-model="endDate"
+          <base-input type="month" class="w-100" input-classes="form-control-sm" v-model="startDate" id="example-month-input" />
+          <base-input type="month" input-classes="form-control-sm w-100" class="ml-1 " v-model="endDate"
             id="example-month-input" />
         </div>
         <div class="ml-auto">
