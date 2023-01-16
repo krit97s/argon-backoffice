@@ -6,11 +6,11 @@
       <div class="d-flex flex-sm-row flex-column mb-2 mb-sm-0">
         <div>
           <b-row>
-            <b-col cols="6">
+            <b-col cols="6" class="pr-1" >
               <base-input type="month" class="w-100" input-classes="form-control-sm" v-model="startDate"
                 id="example-month-input" />
             </b-col>
-            <b-col cols="6">
+            <b-col cols="6"   class="pl-1">
               <base-input type="month" input-classes="form-control-sm w-100" v-model="endDate"
                 id="example-month-input" />
             </b-col>
