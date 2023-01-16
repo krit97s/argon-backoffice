@@ -29,7 +29,7 @@
           <base-dropdown class="nav-item" menu-on-right tag="li" title-tag="a">
             <a slot="title-container" class="nav-link" href="#" role="button">
               <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle bg-primary">
+                <span class="avatar avatar-sm rounded-circle">
                   {{ user.name.charAt(0).toUpperCase() }}
                 </span>
               </div>
@@ -67,12 +67,12 @@
 
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
-            <div class="col-6 collapse-brand">
+            <div class="col-10 collapse-brand">
               <router-link to="/">
-                <img :src="logo">
+                  <h1 class="font-weight-bold text-primary pl-1 pt-2">BACK OFFICE</h1>
               </router-link>
             </div>
-            <div class="col-6 collapse-close">
+            <div class="col-2 collapse-close">
               <navbar-toggle-button @click.native="closeSidebar"></navbar-toggle-button>
             </div>
           </div>
