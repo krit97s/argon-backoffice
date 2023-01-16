@@ -2,7 +2,7 @@
   <div>
 
     <base-header class="pb-6 pb-8 pt-5 pt-md-8 bg-gradient-primary">
-      <b-row>
+      <!-- <b-row>
         <b-col cols="6" class="pr-1">
           <input type="month" class="w-100"
             style="border-radius:5px; outline:none; border:0; color:grey; font-size: 14px; padding: 3px 6px;"
@@ -13,10 +13,10 @@
             style="border-radius:5px; outline:none; border:0; color:grey; font-size: 14px; padding: 3px 6px;"
             input-classes="form-control-sm" v-model="endDate" id="example-month-input" />
         </b-col>
-      </b-row>
+      </b-row> -->
       <!-- Card stats -->
       <div class="d-flex flex-sm-row flex-column mb-2">
-        <div>
+        <!-- <div>
           <b-row>
             <b-col cols="6" class="pr-1">
               <input type="month" class="w-100"
@@ -29,10 +29,25 @@
                 input-classes="form-control-sm" v-model="endDate" id="example-month-input" />
             </b-col>
           </b-row>
-        </div>
+        </div> -->
         <div class="ml-auto mt-2 mt-sm-0">
-          <base-button type="primary" size="sm" @click="currentMonth()">เดือนนี้</base-button>
+          <b-row class="mb-2">
+            <b-col cols="6" class="pr-1">
+              <input type="month" class="w-100"
+                style="border-radius:5px; outline:none; border:0; color:grey; font-size: 14px; padding: 3px 6px;"
+                input-classes="form-control-sm" v-model="startDate" id="example-month-input" />
+            </b-col>
+            <b-col cols="6" class="pl-1">
+              <input type="month" class="w-100"
+                style="border-radius:5px; outline:none; border:0; color:grey; font-size: 14px; padding: 3px 6px;"
+                input-classes="form-control-sm" v-model="endDate" id="example-month-input" />
+            </b-col>
+          </b-row>
+          <div class="text-right">
+            <base-button type="primary"  size="sm" @click="currentMonth()">เดือนนี้</base-button>
           <base-button type="primary" size="sm" @click="previousMonth()">เดือนที่แล้ว</base-button>
+          </div>
+
         </div>
       </div>
 
