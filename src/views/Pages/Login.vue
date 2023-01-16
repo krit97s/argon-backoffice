@@ -30,20 +30,22 @@
             <b-card-body class="px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
                 <h2 class="text-primary font-weight-bold">BACK OFFICE</h2>
+                <small class="text-danger w-100 text-left" v-if="msgError">{{ msgError }}</small>
               </div>
+
               <validation-observer v-slot="{ handleSubmit }" ref="formValidator">
                 <b-form role="form" @submit.prevent="handleSubmit(onSubmit)">
-                  <base-input alternative class="mb-3" name="Email" :rules="{ required: true, email: true }"
-                    prepend-icon="ni ni-email-83" placeholder="Username" v-model="model.email">
+                  <base-input alternative class="mb-3" name="Email" :rules="{ required: true }"
+                    prepend-icon="ni ni-key" placeholder="Username" v-model="form.username">
                   </base-input>
-                  <base-input alternative class="mb-3" name="Password" :rules="{ required: true, min: 6 }"
+                  <base-input alternative class="mb-3" name="Password" :rules="{ required: true }"
                     prepend-icon="ni ni-lock-circle-open" type="password" placeholder="Password"
-                    v-model="model.password">
+                    v-model="form.password">
                   </base-input>
 
                   <!-- <b-form-checkbox v-model="model.rememberMe">Remember me</b-form-checkbox> -->
                   <div class="text-center">
-                    <base-button type="primary" block native-type="submit">Login</base-button>
+                    <base-button :loading="isLoading" type="primary" block native-type="submit">Login</base-button>
                   </div>
                 </b-form>
               </validation-observer>
@@ -66,16 +68,32 @@
 export default {
   data() {
     return {
-      model: {
-        email: '',
+      msgError: null,
+      isLoading: false,
+      form: {
+        username: '',
         password: '',
-        rememberMe: false
       }
     };
   },
   methods: {
-    onSubmit() {
-      // this will be called only after form is valid. You can do api call here to login
+    async onSubmit() {
+      const payload = JSON.parse(JSON.stringify(this.form))
+      this.isLoading = true
+      const response = await this.$store.dispatch("auth/Authoriztaion", payload)
+      this.isLoading = false
+      if (response.status) {
+        window.location = '/'
+        setTimeout(async () => {
+          await this.$notify({
+            title: 'สำเร็จ !',
+            text: response.response.msg,
+            type: 'success',
+          });
+        }, 500);
+      } else {
+        this.msgError = response.response.msg
+      }
     }
   }
 };

@@ -8,7 +8,7 @@
           <base-button class="ml-auto" type="primary" size="sm"
             @click="$emit('changePage', meta.currentPage)">&#8634;</base-button>
           <base-button size="sm" type="primary"
-            @click="$router.push(`/addcategory`)">เพิ่มหมวดหมู่</base-button>
+            @click="$router.push(`/addcategory`)">เพิ่มข้อมูล</base-button>
         </b-col>
       </b-row>
     </template>

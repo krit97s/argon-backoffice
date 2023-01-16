@@ -7,11 +7,15 @@
 
       </navbar-toggle-button>
       <router-link class="navbar-brand" to="/">
-        <h1 class="font-weight-bold text-primary">BACK OFFICE</h1>
+        <div class="d-flex align-items-center">
+          <img src="../../../public/favicon.png" width="30px">
+          <h1 class="font-weight-bold text-primary pl-1 pt-2">BACK OFFICE</h1>
+        </div>
+
       </router-link>
       <slot name="mobile-right">
         <ul class="nav align-items-center d-md-none">
-          <base-dropdown class="nav-item" menu-on-right tag="li" title-tag="a">
+          <!-- <base-dropdown class="nav-item" menu-on-right tag="li" title-tag="a">
             <a slot="title-container" class="nav-link nav-link-icon" href="#" role="button" aria-haspopup="true"
               aria-expanded="false">
               <i class="ni ni-bell-55"></i>
@@ -21,20 +25,20 @@
             <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
-          </base-dropdown>
+          </base-dropdown> -->
           <base-dropdown class="nav-item" menu-on-right tag="li" title-tag="a">
             <a slot="title-container" class="nav-link" href="#" role="button">
               <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="img/theme/team-1.jpg">
+                <span class="avatar avatar-sm rounded-circle bg-primary">
+                  {{ user.name.charAt(0).toUpperCase() }}
                 </span>
               </div>
             </a>
 
             <div class=" dropdown-header noti-title">
-              <h6 class="text-overflow m-0">Welcome!</h6>
+              <h6 class="text-overflow m-0"> {{ user.name }}</h6>
             </div>
-            <router-link to="/profile" class="dropdown-item">
+            <!-- <router-link to="/profile" class="dropdown-item">
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
             </router-link>
@@ -50,8 +54,8 @@
               <i class="ni ni-support-16"></i>
               <span>Support</span>
             </router-link>
-            <div class="dropdown-divider"></div>
-            <a href="#!" class="dropdown-item">
+            <div class="dropdown-divider"></div> -->
+            <a href="#!" class="dropdown-item" @click="$commit('auth/LOGOUT')">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>
@@ -83,8 +87,8 @@
         <!-- <h6 class="navbar-heading text-muted">Documentation</h6> -->
         <!--Navigation-->
         <ul class="navbar-nav mb-md-3">
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.creative-tim.com/learning-lab/bootstrap-vue/alerts/argon-dashboard">
+          <li class="nav-item" style="cursor:pointer" v-if="user">
+            <a class="nav-link" @click="$store.commit('auth/LOGOUT')">
               <i class="ni ni-button-power"></i> ออกจากระบบ
             </a>
           </li>
@@ -107,11 +111,18 @@
 </template>
 <script>
 import NavbarToggleButton from '@/components/NavbarToggleButton'
-
+import { mapState } from 'vuex';
+import Avataaars from 'vuejs-avataaars'
 export default {
   name: 'sidebar',
   components: {
+    Avataaars,
     NavbarToggleButton
+  },
+  computed: {
+    ...mapState({
+      user: (state) => state.auth.user
+    }),
   },
   props: {
     logo: {

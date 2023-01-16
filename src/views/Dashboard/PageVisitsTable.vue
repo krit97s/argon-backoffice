@@ -25,7 +25,7 @@
           </div>
         </template> -->
       </el-table-column>
-      <el-table-column label="customer" min-width="170px" prop="customer_name">
+      <el-table-column label="customer" min-width="250px" prop="customer_name">
         <!-- <template v-slot="{ row }">
 
           <div class="text-nowrap overflow-auto">
@@ -60,10 +60,17 @@
           {{ row.amount }}
         </template>
       </el-table-column>
-      <el-table-column label="source" min-width="100px" prop="source" align="center">
+      <!-- <el-table-column label="source" min-width="100px" prop="source" align="center">
         <template v-slot="{ row }">
           <div class="text-nowrap overflow-auto">
             {{ row.source || '-' }}
+          </div>
+        </template>
+      </el-table-column> -->
+      <el-table-column label="วันที่" min-width="180px" prop="createAt" >
+        <template v-slot="{ row }">
+          <div class="text-nowrap overflow-auto">
+            {{ moment(row.createAt).format("DD/MM/YYYY HH:mm") }}
           </div>
         </template>
       </el-table-column>
@@ -95,6 +102,7 @@
 </template>
 <script>
 import { Table, TableColumn, DropdownMenu, DropdownItem, Dropdown } from 'element-ui'
+import moment from 'moment';
 export default {
   name: 'page-visits-table',
   components: {
@@ -118,6 +126,9 @@ export default {
     isLoading: {
       type: Boolean,
     }
+  },
+  methods:{
+    moment
   },
   data() {
     return {

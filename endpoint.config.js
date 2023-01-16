@@ -40,5 +40,8 @@ export default {
     },
     setting: {
         setting: '/setting'
+    },
+    auth: {
+        auth: '/auth/login'
     }
 }

@@ -15,12 +15,14 @@ import payment from './payment'
 import carousel from './carousel'
 import anounce from './anounce'
 import setting from './setting'
+import auth from './auth'
 
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
+    auth,
     setting,
     anounce,
     carousel,

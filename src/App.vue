@@ -7,6 +7,9 @@
 
 <script>
 export default {
+  beforeCreate(){
+    this.$store.commit("auth/DECODE_TOKEN")
+  }
 }
 </script>
 
