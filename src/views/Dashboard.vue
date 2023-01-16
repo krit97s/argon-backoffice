@@ -4,10 +4,17 @@
     <base-header class="pb-6 pb-8 pt-5 pt-md-8 bg-gradient-primary">
       <!-- Card stats -->
       <div class="d-flex flex-sm-row flex-column mb-2 mb-sm-0">
-        <div class="d-sm-flex">
-          <base-input type="month" class="w-100" input-classes="form-control-sm" v-model="startDate" id="example-month-input" />
-          <base-input type="month" input-classes="form-control-sm w-100" class="ml-1 " v-model="endDate"
-            id="example-month-input" />
+        <div>
+          <b-row>
+            <b-col cols="6">
+              <base-input type="month" class="w-100" input-classes="form-control-sm" v-model="startDate"
+                id="example-month-input" />
+            </b-col>
+            <b-col cols="6">
+              <base-input type="month" input-classes="form-control-sm w-100" v-model="endDate"
+                id="example-month-input" />
+            </b-col>
+          </b-row>
         </div>
         <div class="ml-auto">
           <base-button type="primary" size="sm" @click="currentMonth()">เดือนนี้</base-button>
