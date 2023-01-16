@@ -3,29 +3,22 @@
 
     <base-header class="pb-6 pb-8 pt-5 pt-md-8 bg-gradient-primary">
       <!-- Card stats -->
-      <b-row>
-        <b-col cols="6" class="pr-1">
-          <base-input type="month" style="width:50%!important;" input-classes="form-control-sm" v-model="startDate"
-            id="example-month-input" />
-        </b-col>
-        <b-col cols="6" class="pl-1">
-          <base-input type="month" input-classes="form-control-sm" v-model="endDate" id="example-month-input" />
-        </b-col>
-      </b-row>
-      <div class="d-flex flex-sm-row flex-column mb-2 mb-sm-0">
+      <div class="d-flex flex-sm-row flex-column mb-2">
         <div>
-          <!-- <b-row>
+          <b-row>
             <b-col cols="6" class="pr-1">
-              <base-input type="month" style="width:50%!important;"  input-classes="form-control-sm" v-model="startDate"
-                id="example-month-input" />
+              <input type="month" class="w-100"
+                style="border-radius:5px; outline:none; border:0; color:grey; font-size: 14px; padding: 3px 6px;"
+                input-classes="form-control-sm" v-model="startDate" id="example-month-input" />
             </b-col>
             <b-col cols="6" class="pl-1">
-              <base-input type="month" input-classes="form-control-sm" v-model="endDate"
-                id="example-month-input" />
+              <input type="month" class="w-100"
+                style="border-radius:5px; outline:none; border:0; color:grey; font-size: 14px; padding: 3px 6px;"
+                input-classes="form-control-sm" v-model="endDate" id="example-month-input" />
             </b-col>
-          </b-row> -->
+          </b-row>
         </div>
-        <div class="ml-auto">
+        <div class="ml-auto mt-2 mt-sm-0">
           <base-button type="primary" size="sm" @click="currentMonth()">เดือนนี้</base-button>
           <base-button type="primary" size="sm" @click="previousMonth()">เดือนที่แล้ว</base-button>
         </div>
