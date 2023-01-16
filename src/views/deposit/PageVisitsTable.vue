@@ -27,7 +27,7 @@
       <el-table-column label="จากเลขบัญชี" prop="accNo" min-width="150px">
 
       </el-table-column>
-      <el-table-column label="จำนวน" prop="amount" min-width="90px">
+      <el-table-column label="จำนวน" prop="amount" min-width="150px">
         <template v-slot="{ row }">
           {{ row.amount.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 }) }}
         </template>
