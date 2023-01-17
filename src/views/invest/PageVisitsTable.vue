@@ -35,7 +35,7 @@
           {{ row.remark }}
         </template>
       </el-table-column>
-      <el-table-column label="จัดการโดย" prop="by" min-width="150px" align="center">
+      <el-table-column label="ทำรายการโดย" prop="by" min-width="150px" align="center">
         <template v-slot="{ row }">
   
           <b-badge pill :variant="row.by  == 0 ? 'primary' : 'success'"> {{
