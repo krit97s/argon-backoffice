@@ -68,9 +68,16 @@
         }">
         </sidebar-item>
         <sidebar-item :link="{
+          name: 'ประวัติการเติมเครดิต',
+          path: '/credit',
+          icon: 'ni ni-bullet-list-67 text-primary'
+        }">
+
+        </sidebar-item>
+        <sidebar-item :link="{
           name: 'รายงานสถานะออเดอร์',
           path: '/report',
-          icon: 'ni ni-cart text-primary'
+          icon: 'ni ni-basket text-primary'
         }">
         </sidebar-item>
         <sidebar-item :link="{

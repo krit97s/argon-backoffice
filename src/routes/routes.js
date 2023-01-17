@@ -68,6 +68,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Category.vue')
       },
       {
+        path: '/credit',
+        name: 'credit',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/CreditLog.vue')
+      },
+      {
         path: '/setting',
         name: 'setting',
         component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Setting.vue')

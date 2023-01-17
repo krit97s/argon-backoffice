@@ -17,8 +17,8 @@
             </b-col>
           </b-row>
           <div class="text-right">
-            <base-button type="primary"  size="sm" @click="currentMonth()">เดือนนี้</base-button>
-          <base-button type="primary" size="sm" @click="previousMonth()">เดือนที่แล้ว</base-button>
+            <base-button type="primary" size="sm" @click="currentMonth()">เดือนนี้</base-button>
+            <base-button type="primary" size="sm" @click="previousMonth()">เดือนที่แล้ว</base-button>
           </div>
 
         </div>
@@ -134,10 +134,15 @@
           <page-visits-table :isLoading="isLoadingOrder" :tableData="orderList" :meta="orderMeta"
             :perPage="perPageOrder" @changePage="changePageOrder($event)"></page-visits-table>
         </b-col>
-        <b-col cols="12" class="my-3 mb-xl-0">
+        <b-col cols="12" class="my-4 mb-xl-0">
+          <orderWatingTable :isLoading="isLoadingOrderWating" :tableData="orderWating" :meta="orderWatingMeta"
+            :perPage="perPageOrderWating" @changePage="changePageOrderWating($event)"></orderWatingTable>
+        </b-col>
+        <b-col cols="12" class="my-4 mb-xl-0">
           <depositTable :isLoading="isLoadingDeposit" :tableData="deposit" :meta="depositMeta" :perPage="perPageDeposit"
             @changePage="changePageDeposit($event)"></depositTable>
         </b-col>
+
         <!-- <b-col xl="4" class="mb-5 mb-xl-0">
           <social-traffic-table></social-traffic-table>
         </b-col> -->
@@ -164,9 +169,11 @@ import StatsCard from '@/components/Cards/StatsCard';
 import SocialTrafficTable from './Dashboard/SocialTrafficTable';
 import PageVisitsTable from './Dashboard/PageVisitsTable';
 import depositTable from './deposit/PageVisitsTable.vue';
+import orderWatingTable from './Dashboard/Orderwating.vue';
 
 export default {
   components: {
+    orderWatingTable,
     depositTable,
     Skeleton,
     LineChart,
@@ -183,13 +190,17 @@ export default {
       orderList: (state) => state.order.orderList,
       deposit: (state) => state.deposit.depositList,
       depositMeta: (state) => state.deposit.depositMeta,
+      orderWating: (state) => state.order.orderWatingList,
+      orderWatingMeta: (state) => state.order.orderWatingMeta,
     })
   },
   data() {
     return {
+      isLoadingOrderWating: false,
       isLoadingOrder: false,
       isLoadingDeposit: false,
       perPageOrder: 10,
+      perPageOrderWating: 10,
       perPageDeposit: 5,
       loadingStat: false,
       date: new moment().format('YYYY-MM'),
@@ -225,11 +236,20 @@ export default {
     };
   },
   methods: {
+    changePageOrderWating(currentPage) {
+      this.fetchOrderWating(currentPage)
+    },
     changePageOrder(currentPage) {
       this.fetchOrder(currentPage)
     },
     changePageDeposit(currentPage) {
       this.fetchDeposit(currentPage)
+    },
+    async fetchOrderWating(currentPage) {
+      this.isLoadingOrderWating = true
+      await this.$store.dispatch("order/onFetchOrderWating", { page: currentPage || 1, perPage: this.perPageOrderWating })
+      this.isLoadingOrderWating = false
+
     },
     async fetchDeposit(currentPage) {
       this.isLoadingDeposit = true
@@ -283,6 +303,7 @@ export default {
   async created() {
     this.fetchOverAll()
     this.fetchDeposit()
+    this.fetchOrderWating()
   }
 
 };

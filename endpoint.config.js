@@ -5,7 +5,8 @@ export default {
         overall: '/dashboard'
     },
     order: {
-        order: '/order'
+        order: '/order',
+        wating: '/order/wating'
     },
     product: {
         product: '/product',
@@ -27,7 +28,8 @@ export default {
         marketing: '/marketing'
     },
     report: {
-        report: '/report'
+        report: '/report',
+        result: '/report/result'
     },
     payment: {
         payment: '/payment'
@@ -43,5 +45,8 @@ export default {
     },
     auth: {
         auth: '/auth/login'
+    },
+    credit: {
+        credit: '/credit'
     }
 }

@@ -16,12 +16,14 @@ import carousel from './carousel'
 import anounce from './anounce'
 import setting from './setting'
 import auth from './auth'
+import creditlog from './credit_log'
 
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
+    creditlog,
     auth,
     setting,
     anounce,
