@@ -40,7 +40,7 @@
   
           <b-badge pill :variant="row.by  == 0 ? 'primary' : 'success'"> {{
             row.by == 0 ?
-              'Manual' : 'System'
+              'Manual' : 'Bot'
           }}</b-badge>
         </template>
       </el-table-column>
