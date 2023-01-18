@@ -38,6 +38,11 @@
               </base-input>
             </b-col>
             <b-col lg="6">
+              <base-input type="text" :rules="{ required: true }" name="Place Holder" label="ข้อความตัวอย่าง"
+                placeholder="Ex: Riot ID#tag" v-model="product.place_holder">
+              </base-input>
+            </b-col>
+            <b-col lg="6">
               <base-input type="text" :rules="{ required: true }" name="Image" label="รูปภาพ"
                 placeholder="กรุณาวางลิงค์รูปภาพ" v-model="product.image">
               </base-input>

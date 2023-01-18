@@ -37,6 +37,11 @@
               </base-input>
             </b-col>
             <b-col lg="6">
+              <base-input type="text" :rules="{ required: true }" name="Place Holder" label="ข้อความตัวอย่าง"
+                placeholder="Ex: Riot ID#tag" v-model="form.place_holder">
+              </base-input>
+            </b-col>
+            <b-col lg="6">
               <base-input type="text" :rules="{ required: true }" name="Image" label="รูปภาพ"
                 placeholder="กรุณาวางลิงค์รูปภาพ" v-model="form.image">
               </base-input>
@@ -92,6 +97,7 @@ export default {
         category: '',
         type: 'gtopup',
         pay_to_company: '',
+        place_holder: '',
         cost_discount: '',
         isSpecial: false,
         isWait: false,
