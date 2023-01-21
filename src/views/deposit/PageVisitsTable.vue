@@ -24,7 +24,7 @@
           </span>
         </template>
       </el-table-column>
-      <el-table-column label="จากเลขบัญชี" prop="accNo" min-width="150px">
+      <el-table-column label="รายละเอียด" prop="accNo" min-width="150px">
 
       </el-table-column>
       <el-table-column label="จำนวน" prop="amount" min-width="150px">
@@ -128,6 +128,8 @@ export default {
           return require('@/assets/bankImg/TTB.png')
         case 'UOB':
           return require('@/assets/bankImg/UOB.png')
+        case 'Prompt-IN':
+          return require('@/assets/bankImg/promt.png')
         default:
           break;
       }
