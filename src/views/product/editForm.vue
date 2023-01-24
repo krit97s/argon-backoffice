@@ -62,6 +62,16 @@
                 placeholder="asia,urope * ชื่อเซิฟเวอร์ขั้นด้วย ,">
               </base-input>
             </b-col>
+            <b-col lg="6">
+              <base-input type="text" label="Slug (กรณีไม่มี ให้ปล่อยว่าง)" name="Slug" v-model="product.slug"
+                placeholder="valorant-easy-topup">
+              </base-input>
+            </b-col>
+            <b-col lg="12">
+              <base-input type="text" label="External Link (กรณีไม่มี ให้ปล่อยว่าง)" name="External Link"
+                v-model="product.external_link" placeholder="Url">
+              </base-input>
+            </b-col>
 
             <b-col lg="12" class="px-lg-5 mb-4" v-if="optionsList.length">
               <div class="d-flex align-items-center">

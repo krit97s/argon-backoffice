@@ -61,6 +61,16 @@
                 placeholder="asia,urope * ชื่อเซิฟเวอร์ขั้นด้วย ,">
               </base-input>
             </b-col>
+            <b-col lg="6">
+              <base-input type="text" label="Slug (กรณีไม่มี ให้ปล่อยว่าง)" name="Slug" v-model="form.slug"
+                placeholder="valorant-easy-topup">
+              </base-input>
+            </b-col>
+            <b-col lg="12">
+              <base-input type="text" label="External Link (กรณีไม่มี ให้ปล่อยว่าง)" name="External Link"
+                v-model="form.external_link" placeholder="Url">
+              </base-input>
+            </b-col>
             <b-col lg="12">
               <b-form-checkbox name="check-button-special" v-model="form.isSpecial" switch>
                 สินค้าพิเศษ
@@ -96,6 +106,8 @@ export default {
         name: '',
         category: '',
         type: 'gtopup',
+        slug: '',
+        external_link: '',
         pay_to_company: '',
         place_holder: '',
         cost_discount: '',
@@ -115,6 +127,8 @@ export default {
         name: '',
         category: '',
         type: 'gtopup',
+        slug: '',
+        external_link: '',
         pay_to_company: '',
         cost_discount: '',
         isSpecial: false,
