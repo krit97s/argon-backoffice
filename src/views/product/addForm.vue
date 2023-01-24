@@ -62,7 +62,7 @@
               </base-input>
             </b-col>
             <b-col lg="6">
-              <base-input type="text" label="Slug (กรณีไม่มี ให้ปล่อยว่าง)" name="Slug" v-model="form.slug"
+              <base-input type="text" :rules="{ required: true }" label="Slug" name="Slug" v-model="form.slug"
                 placeholder="valorant-easy-topup">
               </base-input>
             </b-col>
