@@ -36,7 +36,7 @@
               <validation-observer v-slot="{ handleSubmit }" ref="formValidator">
                 <b-form role="form" @submit.prevent="handleSubmit(onSubmit)">
                   <base-input alternative class="mb-3" name="Email" :rules="{ required: true }"
-                    prepend-icon="ni ni-key" placeholder="Username" v-model="form.username">
+                    prepend-icon="ni ni-single-02" placeholder="Username" v-model="form.username">
                   </base-input>
                   <base-input alternative class="mb-3" name="Password" :rules="{ required: true }"
                     prepend-icon="ni ni-lock-circle-open" type="password" placeholder="Password"
