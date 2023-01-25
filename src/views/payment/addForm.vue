@@ -39,7 +39,7 @@
               </base-input>
             </b-col>
             <b-col lg="12" class="mt-3 text-right">
-              <base-button type="success" nativeType="submit" size="larged">ยืนยัน</base-button>
+              <base-button type="success" nativeType="submit" size="larged" :loading="loading">ยืนยัน</base-button>
               <base-button type="danger" size="larged" @click="resetForm()">ล้างค่า</base-button>
             </b-col>
           </b-row>
@@ -61,6 +61,7 @@ export default {
   },
   data() {
     return {
+      loading:false,
       form: {
         order_id: '',
         pay_to_ref1: '',
@@ -78,7 +79,9 @@ export default {
       }
     },
     async submitForm() {
+      this.loading = true
       const response = await this.$store.dispatch("payment/payment", this.form)
+      this.loading = false
       if (response.status) {
         await this.$notify({
           title: 'สำเร็จ !',
