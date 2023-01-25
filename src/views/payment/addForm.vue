@@ -15,6 +15,11 @@
         <div class="pl-lg-4">
           <b-row>
             <b-col lg="6">
+              <base-input name="Source" label="หมายเลขออเดร์ (กรณีไม่มีปล่อยว่าง)"
+                placeholder="หมายเลขออเดอร์" v-model="form.order_id">
+              </base-input>
+            </b-col>
+            <b-col lg="6">
               <base-input :rules="{ required: true }" name="Source" label="UID" placeholder="ข้อมูลตัวละคร"
                 v-model="form.pay_to_ref1">
               </base-input>
@@ -24,7 +29,7 @@
                 placeholder="จำนวนเงินที่ต้องการเติม" v-model="form.pay_to_amount">
               </base-input>
             </b-col>
-            <b-col lg="12">
+            <b-col lg="6">
               <base-input label="สินค้า" :rules="{ required: true }" name="SourceID">
                 <select class="form-control" v-model="form.pay_to_company">
                   <option :value="product.pay_to_company" v-for="(product, index) in productList" :key="index">{{
@@ -57,6 +62,7 @@ export default {
   data() {
     return {
       form: {
+        order_id: '',
         pay_to_ref1: '',
         pay_to_company: '',
         pay_to_amount: ''

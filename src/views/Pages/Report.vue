@@ -6,13 +6,12 @@
 
       <b-row class="mt-5">
         <b-col cols="12" class="mb-5 mb-xl-0">
-          <page-visits-table :isLoading="isLoading" :tableData="report" :meta="reportMeta" :perPage="perPage"
-            @changePage="changePage($event)"></page-visits-table>
-
-        </b-col>
-        <b-col cols="12" class="my-4 mb-xl-0">
           <ReportResult :isLoading="isLoadingResult" :tableData="reportResult" :meta="reportResultMeta"
             :perPage="perPage" @changePage="changePageResult($event)"></ReportResult>
+        </b-col>
+        <b-col cols="12" class="my-4 mb-xl-0">
+          <page-visits-table :isLoading="isLoading" :tableData="report" :meta="reportMeta" :perPage="perPage"
+            @changePage="changePage($event)"></page-visits-table>
         </b-col>
         <!-- <b-col cols="12" class="mb-5 mb-xl-0 mt-2">
           <page-visits-table :isLoading="isLoading" :tableData="report" :meta="reportMeta" :perPage="perPage"
