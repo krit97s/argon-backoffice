@@ -86,11 +86,11 @@
   }}</b-badge>
           </template>
         </el-table-column> -->
-      <el-table-column label="status" min-width="170px" prop="status">
+      <el-table-column label="status" min-width="170px" prop="status" align="center">
         <template v-slot="{ row }">
           <b-badge pill :variant="row.status == 0 ? 'primary' : row.status == 1 ? 'success' : 'danger'"> {{
             row.status
-            == 3 ? 'รอติดต่อแอดมิน' : row.status == 0 ? 'รอดำเนินการ' : row.status == 1 ? 'สำเร็จ' : 'ยกเลิก'
+            == 3 ? 'ติดต่อแอดมิน' : row.status == 0 ? 'รอดำเนินการ' : row.status == 1 ? 'สำเร็จ' : 'ยกเลิก'
           }}</b-badge>
         </template>
       </el-table-column>
