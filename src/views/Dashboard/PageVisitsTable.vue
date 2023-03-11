@@ -90,7 +90,7 @@
         <template v-slot="{ row }">
           <b-badge pill :variant="row.status == 0 ? 'primary' : row.status == 1 ? 'success' : 'danger'"> {{
                row.status
-            == 4 ? 'HOLDING' :
+            == 4 ? 'Queue' :
             row.status
             == 3 ? 'ติดต่อแอดมิน' : row.status == 0 ? 'รอดำเนินการ' : row.status == 1 ? 'สำเร็จ' : 'ยกเลิก'
           }}</b-badge>
