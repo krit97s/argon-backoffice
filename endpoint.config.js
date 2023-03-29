@@ -6,6 +6,7 @@ export default {
     },
     order: {
         order: '/order',
+        orderById: '/orderById',
         wating: '/order/wating'
     },
     product: {

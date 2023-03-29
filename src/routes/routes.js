@@ -113,6 +113,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "demo" */ '../views/category/add.vue')
       },
       {
+        path: '/editorder',
+        name: 'edit order',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/order/edit.vue')
+      },
+      {
         path: '/editmarketing',
         name: 'edit marketing',
         component: () => import(/* webpackChunkName: "demo" */ '../views/marketing/edit.vue')

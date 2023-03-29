@@ -83,13 +83,13 @@
     </base-header>
     <!--Charts-->
     <b-container fluid class="mt--7">
-      <b-row>
-        <b-col xl="8" class="mb-5 mb-xl-0">
+      <b-row v-if="!loadingStat">
+        <b-col xl="12" class="mb-5 mb-xl-0">
           <card type="default" header-classes="bg-transparent">
             <b-row align-v="center" slot="header">
               <b-col>
-                <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
-                <h5 class="h3 text-white mb-0">Sales value</h5>
+                <h6 class="text-light text-uppercase ls-1 mb-1">ภาพรวม 12 เดือน</h6>
+                <h5 class="h3 text-white mb-0">ยอดขาย</h5>
               </b-col>
               <!-- <b-col>
                 <b-nav class="nav-pills justify-content-end">
@@ -106,13 +106,14 @@
                 </b-nav>
               </b-col> -->
             </b-row>
-            <line-chart :height="350" ref="bigChart" :chart-data="bigLineChart.chartData"
+
+            <line-chart :height="350" ref="bigChart" :chart-data="bigLineChartState"
               :extra-options="bigLineChart.extraOptions">
             </line-chart>
           </card>
         </b-col>
 
-        <b-col xl="4" class="mb-5 mb-xl-0">
+        <!-- <b-col xl="4" class="mb-5 mb-xl-0">
           <card header-classes="bg-transparent">
             <b-row align-v="center" slot="header">
               <b-col>
@@ -124,6 +125,11 @@
             <bar-chart :height="350" ref="barChart" :chart-data="redBarChart.chartData">
             </bar-chart>
           </card>
+        </b-col> -->
+      </b-row>
+      <b-row v-else>
+        <b-col cols="12">
+          <Skeleton height="350px" />
         </b-col>
       </b-row>
       <!-- End charts-->
@@ -131,8 +137,8 @@
       <!--Tables-->
       <b-row class="mt-5">
         <b-col cols="12" class="mb-5 mb-xl-0">
-          <page-visits-table :isLoading="isLoadingOrder" :tableData="orderList" :meta="orderMeta"
-            :perPage="perPageOrder" @changePage="changePageOrder($event)"></page-visits-table>
+          <page-visits-table :isLoading="isLoadingOrder" :tableData="orderList" :meta="orderMeta" :perPage="perPageOrder"
+            @changePage="changePageOrder($event)"></page-visits-table>
         </b-col>
         <b-col cols="12" class="my-4 mb-xl-0">
           <orderWatingTable :isLoading="isLoadingOrderWating" :tableData="orderWating" :meta="orderWatingMeta"
@@ -185,6 +191,7 @@ export default {
   },
   computed: {
     ...mapState({
+      bigLineChartState: (state) => state.dashboard.bigLineChart,
       orderMeta: (state) => state.order.orderMeta,
       overAll: (state) => state.dashboard.overall,
       orderList: (state) => state.order.orderList,
@@ -208,8 +215,7 @@ export default {
       endDate: new moment().format('YYYY-MM'),
       bigLineChart: {
         allData: [
-          [0, 20, 10, 30, 15, 40, 20, 60, 60],
-          [0, 20, 5, 25, 10, 30, 15, 40, 40]
+          [0, 20, 10, 30, 15, 40, 20, 30],
         ],
         activeIndex: 0,
         chartData: {
@@ -228,7 +234,7 @@ export default {
           labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
           datasets: [{
             label: 'Sales',
-            data: [25, 20, 30, 22, 17, 29]
+            data: [10, 20, 10, 30, 15, 40, 20, 50, 60]
           }]
         },
         extraOptions: chartConfigs.blueChartOptions
@@ -283,7 +289,7 @@ export default {
       this.fetchOverAll()
     },
     moment,
-    initBigChart(index) {
+    async initBigChart(index) {
       let chartData = {
         datasets: [
           {
@@ -291,14 +297,14 @@ export default {
             data: this.bigLineChart.allData[index]
           }
         ],
-        labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        labels: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'],
       };
       this.bigLineChart.chartData = chartData;
       this.bigLineChart.activeIndex = index;
     }
   },
-  mounted() {
-    this.initBigChart(0);
+  async mounted() {
+    // await this.initBigChart(0);
   },
   async created() {
     this.fetchOverAll()

@@ -8,7 +8,8 @@ export default {
             const url = `${ENDPOINT_CONFIG.dashboard.overall}?date=${data}`
             const response = await INSTANCE.get(url)
             commit("SET_DASHBOARD_OVERALL", response.data.data)
-            return true
+            commit("SET_DASHBOARD_GRAPH", response.data.data)
+            return response.data.data
         } catch (error) {
             return false
         }
